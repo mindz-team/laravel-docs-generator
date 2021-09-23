@@ -1,0 +1,24 @@
+{
+    "name": "mindz-team/laravel-docs-generator",
+    "description": "This package provide smart commands for Swagger / OpenApi annotations to generate documentation",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "roman.szymanski",
+            "email": "r.szymanski@mindz.pl"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Mindz\\LaravelDocsGenerator\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mindz\\LaravelDocsGenerator\\LaravelDocsGeneratorServiceProvider"
+            ]
+        }
+    }
+}
