@@ -19,7 +19,7 @@ And run
 
 Publish config file
 
-    php artisan vendor:publish  --provider="Mindz\LaravelCrudable\LaravelDocsGeneratorServiceProvider" --tag="config"
+    php artisan vendor:publish  --provider="Mindz\LaravelDocsGenerator\LaravelDocsGeneratorServiceProvider"" --tag="config"
 
 # Perquisites
 
