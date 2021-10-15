@@ -3,6 +3,7 @@
 namespace Mindz\LaravelDocsGenerator;
 
 use Illuminate\Support\ServiceProvider;
+use Mindz\LaravelDocsGenerator\Commands\FortifyDocsCommand;
 use Mindz\LaravelDocsGenerator\Commands\GenerateCrudControllerDocsCommand;
 use Mindz\LaravelDocsGenerator\Commands\GenerateDocCommand;
 use Mindz\LaravelDocsGenerator\Commands\InitDocumentationCommand;
@@ -15,7 +16,8 @@ class LaravelDocsGeneratorServiceProvider extends ServiceProvider
             $this->commands([
                 GenerateCrudControllerDocsCommand::class,
                 InitDocumentationCommand::class,
-                GenerateDocCommand::class
+                GenerateDocCommand::class,
+                FortifyDocsCommand::class
             ]);
         }
 

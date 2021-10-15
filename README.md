@@ -19,7 +19,30 @@ And run
 
 Publish config file
 
-    php artisan vendor:publish  --provider="Mindz\LaravelDocsGenerator\LaravelDocsGeneratorServiceProvider"" --tag="config"
+    php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+    php artisan vendor:publish  --provider="Mindz\LaravelDocsGenerator\LaravelDocsGeneratorServiceProvider" --tag="config"
+
+## Cookie based auth in SWAGGER
+
+To use swagger based on cookie based auth modify file `resources/views/vendor/l5-swagger/index.blade.php` and set `requestInterceptor` as follows
+
+    requestInterceptor: function (request) {
+        request.headers['X-XSRF-TOKEN'] = getCookie('XSRF-TOKEN');
+        return request;
+    },
+
+and add method
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = decodeURIComponent(document.cookie).split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
 
 # Perquisites
 
@@ -99,6 +122,26 @@ Command generates single file based on `tag` and `path`. Which contains document
 
 Additionally - if you uses parameter in the path like `/users/{user}` the query string parameter will be created automatically with name according to path parameter and default (integer) type
 
+
+## Fortify endpoints documentation
+
+Generate swagger documentation fortify functionalities from [laravel/fortify](https://github.com/laravel/fortify) package 
+
+```shell
+php docs-generate:fortify
+```
+
+Arguments:
+
+`none`
+
+Options:
+
+`none`
+
+To determine which endpoints documentation should be published set them in config file `config/docs-generator.php`
+
+
 # Configuration
 
 You can determine where annotations files should be stored in your file system using config file published during installation `config/docs-generator.php`
@@ -109,7 +152,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 # Security
 
-If you discover any security related issues, please email [author ](mailto:r.szymanski@mindz.it) instead of using the
 issue tracker.
 
 # Credits
