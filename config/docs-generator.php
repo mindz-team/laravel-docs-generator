@@ -8,6 +8,8 @@ return [
         'Authentication/CsrfCookie',
         'Authentication/Login',
         'Authentication/Logout',
+        'Authentication/EmailVerification',
+        'Authentication/SendVerificationEmail',
         'Password/ForgetPassword',
         'Password/ResetPassword',
         'Register/Register',
