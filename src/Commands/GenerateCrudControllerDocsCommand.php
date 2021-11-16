@@ -44,7 +44,7 @@ class GenerateCrudControllerDocsCommand extends Command
     {
         $this->resource = Str::kebab(Str::plural($this->argument('name')));
         $this->tag = $this->option('tag') ?? $this->resource;
-        $this->schema = Str::singular(Str::title($this->option('schema') ?? $this->resource));
+        $this->schema = str_replace('-', '', Str::singular(Str::title($this->option('schema') ?? $this->resource)));
         $this->security = $this->option('security') ?? 'bearerAuth';
 
         $path = config('docs-generator.annotations_path', app_path() . '/Swagger');
